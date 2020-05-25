@@ -40,7 +40,7 @@ DECLARE @DateOfWeather DATE = CAST(GETDATE() AS DATE),
 				VALUES (@WeatherStatusID, @WeatherStatusName, @WeatherStatusDetails)
 
 			IF NOT EXISTS (SELECT 1 FROM owm.CurrentWeather WHERE DateOfWeather = @DateOfWeather AND RowHash = @CurrentWeatherRowHash)
-				UPDATE owm.CurrentWeather SET IsCurrent = 0, UpdatedOn = SYSDATETIMEOFFSET() WHERE DateOfWeather = @DateOfWeather
+				UPDATE owm.CurrentWeather SET IsCurrent = 0, UpdatedOn = SYSDATETIMEOFFSET() --WHERE DateOfWeather = @DateOfWeather
 
 			IF NOT EXISTS (SELECT 1 FROM owm.CurrentWeather WHERE DateOfWeather = @DateOfWeather AND RowHash = @CurrentWeatherRowHash)
 				INSERT INTO owm.CurrentWeather (DateOfWeather, IsCurrent, MinTemperatureF, TemperatureF, MaxTemperatureF, SunriseTime, SunsetTime,
