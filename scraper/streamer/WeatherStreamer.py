@@ -25,7 +25,7 @@ class Package:
 
     def Main(self, latitude, longitude, key):
         self.RecordCount = 0
-        #ProcessExecutionID = self.ProcessExecutionID
+        ProcessExecutionID = self.ProcessExecutionID
         connection = db_connect_f(sql_username, sql_password)
         print('starting current weather')
         observation = owm.weather_at_coords(latitude, longitude)
@@ -176,5 +176,5 @@ class Package:
         connection.close()
 
 
-#p = Package(1)
-#p.Main(40.8299, 96.7012, api_key)
+p = Package(1)
+p.Main(40.8299, 96.7012, api_key)

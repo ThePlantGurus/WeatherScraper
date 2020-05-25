@@ -22,7 +22,9 @@ DECLARE @DateOfWeather DATE = CAST(GETDATE() AS DATE),
 		@ErrorMessage NVARCHAR(MAX),
 		@ErrorSeverity INT,
 		@ErrorState INT,
-		@xstate INT
+		@xstate INT,
+		@ProgramID INT = 2,
+		@ProcessExecutionID BIGINT = {ProcessExecutionID}
 
 	BEGIN TRY
 		BEGIN TRANSACTION
@@ -60,8 +62,8 @@ DECLARE @DateOfWeather DATE = CAST(GETDATE() AS DATE),
 
 			IF @xstate = -1
 				ROLLBACK TRANSACTION	
-			--INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
-			--VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
+			INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
+			VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
 
 		END CATCH
 """
@@ -85,7 +87,9 @@ DECLARE @DateOfWeatherForecast DATE = CAST((CAST('{reference_time}' AS DATETIMEO
 		@ErrorMessage NVARCHAR(MAX),
 		@ErrorSeverity INT,
 		@ErrorState INT,
-		@xstate INT
+		@xstate INT,
+		@ProgramID INT = 2,
+		@ProcessExecutionID BIGINT = {ProcessExecutionID}
 
 	BEGIN TRY
 		BEGIN TRANSACTION
@@ -138,8 +142,8 @@ DECLARE @DateOfWeatherForecast DATE = CAST((CAST('{reference_time}' AS DATETIMEO
 
 			IF @xstate = -1
 				ROLLBACK TRANSACTION	
-			--INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
-			--VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
+			INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
+			VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
 
 		END CATCH		
 """
@@ -169,7 +173,9 @@ DECLARE @DateOfWeatherForecast DATE = CAST((CAST('{reference_time}' AS DATETIMEO
 		@ErrorMessage NVARCHAR(MAX),
 		@ErrorSeverity INT,
 		@ErrorState INT,
-		@xstate INT
+		@xstate INT,
+		@ProgramID INT = 2,
+		@ProcessExecutionID BIGINT = {ProcessExecutionID}
 
 	BEGIN TRY
 		BEGIN TRANSACTION
@@ -214,8 +220,8 @@ DECLARE @DateOfWeatherForecast DATE = CAST((CAST('{reference_time}' AS DATETIMEO
 
 			IF @xstate = -1
 				ROLLBACK TRANSACTION	
-			--INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
-			--VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
+			INSERT INTO etl.ProcessExecutionLogs (ProgramID, ProcessExecutionID, ErrorSeverity, ErrorState, X_State, ErrorMessage)
+			VALUES (@ProgramID, @ProcessExecutionID, @ErrorSeverity, @ErrorState, @xstate, @ErrorMessage)
 
 		END CATCH		
 """
